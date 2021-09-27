@@ -50,7 +50,7 @@ namespace AspMvcTrackingLib
         {
 
             var date = DateTime.Now;
-            var root = context.Server.MapPath("~/");
+            var root = context.Server.MapPath("~/logs");
             var dir = Path.Combine(root, date.Year.ToString(), date.Month.ToString(), date.Day.ToString()); 
             var path = Path.Combine(dir, string.Format("access-{0}.log", user));
             var logs = GetAuditLog(context);
