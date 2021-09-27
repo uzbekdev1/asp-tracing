@@ -51,15 +51,13 @@ namespace AspMvcTrackingLib
 
             var date = DateTime.Now;
             var root = context.Server.MapPath("~/");
-            var dir = Path.Combine(root, date.Year.ToString(), date.Month.ToString(), date.Day.ToString());
-            
-            Directory.CreateDirectory(dir);
-
+            var dir = Path.Combine(root, date.Year.ToString(), date.Month.ToString(), date.Day.ToString()); 
             var path = Path.Combine(dir, string.Format("access-{0}.log", user));
             var logs = GetAuditLog(context);
 
             Task.Factory.StartNew(() =>
-            {
+            { 
+                Directory.CreateDirectory(dir); 
                 File.AppendAllText(path, logs, Encoding.UTF8);
             });
         }
